@@ -1,0 +1,32 @@
+# Virtual environment
+.venv/
+venv/
+ENV/
+env/
+*.pyc
+__pycache__/
+
+# Node / Frontend
+node_modules/
+dist/
+.eslintcache
+*.log
+
+# Databases
+*.sqlite3
+db.sqlite3
+
+# Local settings / secrets
+.env
+.env.local
+.env.*.local
+.DS_Store
+
+# IDEs
+.idea/
+.vscode/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.swp

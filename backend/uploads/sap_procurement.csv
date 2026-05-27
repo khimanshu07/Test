@@ -1,0 +1,5 @@
+MATNR,WERKS,EKGRP,Fuel_Type,Menge,Einheit,Buchungsdatum,Lieferant
+MAT-1011,1000,G01,Diesel,14500,L,2026-05-10,Bavarian Fuels
+MAT-2022,2000,G02,Gasoline,450,GAL,2026-05-14,Standard Oil
+MAT-3033,5000,G01,Diesel,2000,L,2026-05-18,Unknown Supplier
+MAT-4044,1000,G01,Diesel,-250,L,2026-05-20,Bavarian Fuels
