@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useAuth } from '../context/AuthContext';
 import { useLocation } from 'react-router-dom';
 import { AlertCircle, Eye, EyeOff, UserPlus } from 'lucide-react';
+import { API_BASE } from '../utils/api';
 
 export const Login: React.FC = () => {
   const { login } = useAuth();
@@ -33,7 +34,7 @@ export const Login: React.FC = () => {
 
     if (activeTab === 'signin') {
       try {
-        const res = await fetch('http://localhost:8000/api/auth/login/', {
+        const res = await fetch(`${API_BASE}/auth/login/`, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ username, password })
