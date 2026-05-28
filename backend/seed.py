@@ -21,7 +21,7 @@ def seed_data():
 
     # 2. Create Users
     admin_user, _ = User.objects.get_or_create(
-        username="admin",
+        username="admin@acme.com",
         email="admin@acme.com",
         role="ADMIN",
         organization=org,
@@ -32,7 +32,7 @@ def seed_data():
     admin_user.save()
 
     analyst_user, _ = User.objects.get_or_create(
-        username="analyst",
+        username="analyst@acme.com",
         email="analyst@acme.com",
         role="ANALYST",
         organization=org
@@ -41,14 +41,14 @@ def seed_data():
     analyst_user.save()
 
     client_user, _ = User.objects.get_or_create(
-        username="client",
+        username="client@acme.com",
         email="client@acme.com",
         role="CLIENT_USER",
         organization=org
     )
     client_user.set_password("client123")
     client_user.save()
-    print("Role-based users created: admin/admin123, analyst/analyst123, client/client123")
+    print("Role-based users created: admin@acme.com/admin123, analyst@acme.com/analyst123, client@acme.com/client123")
 
     # 3. Create DataSources
     sap_source, _ = DataSource.objects.get_or_create(

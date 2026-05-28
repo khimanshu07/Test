@@ -3,7 +3,7 @@ from rest_framework.routers import DefaultRouter
 from rest_framework_simplejwt.views import TokenRefreshView
 from api.views import (
     DataSourceViewSet, UploadBatchViewSet, EmissionRecordViewSet,
-    AuditLogViewSet, DashboardAnalyticsView, CustomTokenObtainPairView
+    AuditLogViewSet, DashboardAnalyticsView, CustomTokenObtainPairView, UserSignUpView
 )
 
 router = DefaultRouter()
@@ -14,6 +14,7 @@ router.register('auditlogs', AuditLogViewSet, basename='auditlog')
 
 urlpatterns = [
     path('auth/login/', CustomTokenObtainPairView.as_view(), name='token_obtain_pair'),
+    path('auth/signup/', UserSignUpView.as_view(), name='user_signup'),
     path('auth/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
     path('analytics/', DashboardAnalyticsView.as_view(), name='dashboard_analytics'),
     path('', include(router.urls)),

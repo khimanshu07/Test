@@ -53,17 +53,37 @@ export const Login: React.FC = () => {
         setLoading(false);
       }
     } else {
-      setTimeout(() => {
-        setSuccess('Account requested successfully! Please contact admin to activate your credentials.');
-        setLoading(false);
+      try {
+        const res = await fetch(`${API_BASE}/auth/signup/`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            email: email.trim(),
+            password,
+            first_name: firstName.trim(),
+            last_name: lastName.trim(),
+            company_name: companyName.trim()
+          })
+        });
+
+        const data = await res.json();
+
+        if (!res.ok) {
+          throw new Error(data.error || 'Failed to submit registration request.');
+        }
+
+        setSuccess('Registration request submitted successfully! Your account is pending admin activation.');
         // Clear fields
-        setUsername('');
         setPassword('');
         setEmail('');
         setCompanyName('');
         setFirstName('');
         setLastName('');
-      }, 800);
+      } catch (err: any) {
+        setError(err.message || 'Server error. Make sure backend is running.');
+      } finally {
+        setLoading(false);
+      }
     }
   };
 
@@ -142,11 +162,11 @@ export const Login: React.FC = () => {
 
           {activeTab === 'signin' ? (
             <input
-              type="text"
+              type="email"
               required
               value={username}
               onChange={(e) => setUsername(e.target.value)}
-              placeholder="Username"
+              placeholder="Email"
               className="w-full bg-slate-900 border border-slate-800 focus:border-brand-500 focus:ring-1 focus:ring-brand-500 rounded-lg py-2.5 px-3.5 text-white placeholder-slate-500 text-xs outline-none transition duration-200"
             />
           ) : (
