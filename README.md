@@ -40,8 +40,11 @@ sequenceDiagram
     Backend (API)->>Database: Save new User (Inactive)
     Backend (API)-->>Frontend: Success (Pending Activation)
     
-    Admin->>Backend (API): Logs in to Django Admin (/admin/)
-    Admin->>Database: Sets User to Active (is_active=True)
+    Admin->>Frontend: Navigates to Settings (Admin Console)
+    Admin->>Frontend: Clicks "Approve" on pending User
+    Frontend->>Backend (API): POST /api/users/{id}/approve/
+    Backend (API)->>Database: Sets is_active=True & assigns Role
+    Backend (API)-->>Frontend: Success (User Activated)
     
     User->>Frontend: Submits Login Form (Email & Password)
     Frontend->>Backend (API): POST /api/auth/login/
