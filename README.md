@@ -63,7 +63,7 @@ You can approve users directly inside the application frontend:
 2. **Open Settings**: Click on **Settings** in the sidebar. This opens the **Admin Management Console**.
 3. **Approve User**: Under **User Directory & Approvals**, locate the pending signup (highlighted with a "Pending Approval" tag). Click the green **Approve** button to activate them instantly.
 4. **Adjust Role**: Use the inline dropdown select menu to assign/change their permission level (`Client User`, `Analyst`, or `Admin`).
-5. *(Optional Database Alternative)*: If needed, raw database records can still be managed in the Django Admin Portal at `/admin/`.
+
 
 ### 3. User Login
 * The activated user logs into the app using their **Email** and **Password**.
@@ -77,7 +77,7 @@ If you have seeded the database, the following accounts are available immediatel
 
 | Email / Username | Password | Role | Access Level |
 | :--- | :--- | :--- | :--- |
-| **`admin@acme.com`** | `admin123` | **ADMIN** | Full dashboard, data manipulation, database admin panel (`/admin/`). |
+| **`admin@acme.com`** | `admin123` | **ADMIN** | Full dashboard, data manipulation, and admin management console (Settings). |
 | **`analyst@acme.com`** | `analyst123` | **ANALYST** | Quality control, reviews raw records, approves/rejects emission inputs. |
 | **`client@acme.com`** | `client123` | **CLIENT_USER** | Data Uploader, configures sources, uploads raw files (SAP/Utility/Travel). |
 
@@ -195,11 +195,10 @@ Once logged in, different roles can perform actions in the interface to test or 
 * **Flow**:
   * Inspect the secure system log tracking all user actions (e.g. uploads, manual corrections, status changes). Each log details who performed the action, which organization they belong to, and the timestamp.
 
-### ⚙️ 6. Manage Platform & Approvals in Django Admin (Admin Only)
-* **Access**: Log in as `admin@acme.com` / `admin123` at the backend URL's `/admin/` path (e.g., `https://<your-hosted-backend-url>/admin/` or `http://127.0.0.1:8000/admin/`).
+### ⚙️ 6. Manage Platform Settings (Admin Only)
+* **Access**: Log in as `admin@acme.com` / `admin123` and navigate to **Settings**.
 * **Flow**:
-  * **Approve Pending Accounts**: Go to **Users**, click an inactive pending registration (indicated by a red cross), verify their details, assign their **Role** and **Organization**, check **Active**, and click **Save**.
-  * **Manage Tenants**: Go to **Organizations** to view, create, or update enterprise client companies.
-  * **Raw Data Audits**: Directly inspect, query, or manage raw ingested records under **Data Sources**, **Upload Batches**, **Raw Records**, and **Emission Records** tables.
+  * **Approve Pending Accounts**: Under the User Directory, approve pending signups and assign appropriate roles.
+  * **Manage Ingestion Channels**: View active data sources and toggle status configurations.
 
 

@@ -84,6 +84,6 @@ Once the backend is deployed, you can access the container/terminal or run a one
 python seed.py
 ```
 This initializes the following credentials:
-- **Admin**: `admin` / `admin123`
-- **Analyst**: `analyst` / `analyst123`
-- **Client**: `client` / `client123`
+- **Admin**: `admin@acme.com` / `admin123`
+- **Analyst**: `analyst@acme.com` / `analyst123`
+- **Client**: `client@acme.com` / `client123`
