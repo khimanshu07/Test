@@ -13,6 +13,7 @@ ALLOWED_HOSTS = ['*']
 
 # Application definition
 INSTALLED_APPS = [
+    'jazzmin',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -130,3 +131,47 @@ USE_TZ = True
 # Static files
 STATIC_URL = 'static/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# Jazzmin Admin Theme Configurations
+JAZZMIN_SETTINGS = {
+    "site_title": "ESG Platform Admin",
+    "site_header": "ESG Admin",
+    "site_brand": "ESG Platform",
+    "welcome_sign": "Welcome to the ESG Admin Portal",
+    "copyright": "Acme ESG Corp",
+    "show_sidebar": True,
+    "navigation_expanded": True,
+    "icons": {
+        "api.user": "fas fa-user",
+        "api.organization": "fas fa-building",
+        "api.datasource": "fas fa-database",
+        "api.uploadbatch": "fas fa-file-upload",
+        "api.rawrecord": "fas fa-file-csv",
+        "api.emissionrecord": "fas fa-leaf",
+        "api.reviewaction": "fas fa-check-circle",
+        "api.auditlog": "fas fa-history",
+    },
+    "default_icon_parents": "fas fa-folder",
+    "default_icon_children": "fas fa-file",
+    "related_modal_active": True,
+    "changeform_format": "horizontal_tabs",
+}
+
+JAZZMIN_UI_TWEAKS = {
+    "navbar_small_text": False,
+    "footer_small_text": False,
+    "body_small_text": False,
+    "brand_small_text": False,
+    "brand_colour": "navbar-emerald",
+    "accent": "accent-teal",
+    "navbar": "navbar-dark bg-dark",
+    "no_navbar_border": False,
+    "sidebar": "sidebar-dark-teal",
+    "sidebar_nav_small_text": False,
+    "sidebar_disable_expand": False,
+    "sidebar_nav_child_indent": True,
+    "sidebar_nav_compact_layout": False,
+    "theme": "darkly",
+    "dark_mode_theme": "darkly",
+}
+
