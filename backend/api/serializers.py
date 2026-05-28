@@ -12,7 +12,7 @@ class UserSerializer(serializers.ModelSerializer):
     
     class Meta:
         model = User
-        fields = ['id', 'username', 'email', 'role', 'organization', 'organization_name']
+        fields = ['id', 'username', 'email', 'role', 'organization', 'organization_name', 'is_active']
 
 class CustomTokenObtainPairSerializer(TokenObtainPairSerializer):
     def validate(self, attrs):

@@ -55,16 +55,12 @@ sequenceDiagram
 * They cannot log in until approved.
 
 ### 2. Admin Approval (Step-by-Step)
-1. **Access the Admin Portal**: Navigate to the backend URL path ending in `/admin/` (e.g., `http://127.0.0.1:8000/admin/` locally or `https://<backend-url>/admin/` in production).
-2. **Log In**: Sign in using your administrator credentials (e.g., `admin@acme.com` / `admin123`).
-3. **Open Users**: Click on **Users** in the sidebar navigation (under the **Api** section).
-4. **Select Inactive User**: Locate the user registration you want to approve. Inactive users will show a red indicator or cross under the **Active** column. Click on their name/email.
-5. **Assign Details**:
-   * Review the user's name, email, and requested company name.
-   * Assign a **Role** (`Admin`, `Analyst`, or `Client User`).
-   * Verify/Assign their **Organization** (the database automatically matches or creates this from the company name they typed during signup).
-6. **Activate Account**: Scroll down to the **Permissions** section and check the **Active** (`is_active`) checkbox.
-7. **Save**: Click the **Save** button in the bottom right corner. The user is now activated and can log in instantly.
+You can approve users directly inside the application frontend:
+1. **Log In as Admin**: Sign in using your administrator credentials (e.g., `admin@acme.com` / `admin123`) on the frontend login page.
+2. **Open Settings**: Click on **Settings** in the sidebar. This opens the **Admin Management Console**.
+3. **Approve User**: Under **User Directory & Approvals**, locate the pending signup (highlighted with a "Pending Approval" tag). Click the green **Approve** button to activate them instantly.
+4. **Adjust Role**: Use the inline dropdown select menu to assign/change their permission level (`Client User`, `Analyst`, or `Admin`).
+5. *(Optional Database Alternative)*: If needed, raw database records can still be managed in the Django Admin Portal at `/admin/`.
 
 ### 3. User Login
 * The activated user logs into the app using their **Email** and **Password**.

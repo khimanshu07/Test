@@ -117,6 +117,27 @@ class ApiClient {
     }
     return res.json();
   }
+
+  async patch<T>(url: string, data: any): Promise<T> {
+    const headers: any = this.getHeaders();
+    headers['Content-Type'] = 'application/json';
+
+    const res = await fetch(`${API_BASE}${url}`, {
+      method: 'PATCH',
+      headers,
+      body: JSON.stringify(data)
+    });
+
+    if (!res.ok) {
+      if (res.status === 401) {
+        localStorage.removeItem('esg_access_token');
+        window.location.href = '/login';
+      }
+      const errText = await res.text();
+      throw new Error(errText || `PATCH request to ${url} failed with status ${res.status}`);
+    }
+    return res.json();
+  }
 }
 
 export const api = new ApiClient();
