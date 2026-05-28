@@ -14,5 +14,5 @@ COPY . .
 
 EXPOSE 8000
 
-CMD ["sh", "-c", "python manage.py migrate && python seed.py && gunicorn esg_backend.wsgi:application --bind 0.0.0.0:10000"]
+CMD ["sh", "-c", "python manage.py migrate && python seed.py && python manage.py collectstatic --noinput && gunicorn esg_backend.wsgi:application --bind 0.0.0.0:10000"]
 
