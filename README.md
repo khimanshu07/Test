@@ -153,3 +153,46 @@ From the root directory containing `docker-compose.yml`, run:
 docker-compose up --build
 ```
 This starts both the backend (on port `8000`) and the frontend (on port `5173`) with the Postgres database fully managed.
+
+---
+
+## 🖥️ Live Hosted Platform Guide (How to Use)
+
+Once logged in, different roles can perform actions in the interface to test or manage the platform. Below are step-by-step flows for testing the hosted system:
+
+### 📊 1. View Reporting Dashboard (All Roles)
+* **Access**: Log in with any of the seeded credentials.
+* **Flow**:
+  * View dynamic summary metrics at the top: **Scope 1** (direct combustion), **Scope 2** (purchased grid electricity), and **Scope 3** (corporate travel).
+  * Hover over the interactive **Scope Emissions Breakdown** (pie chart) and **Monthly Emissions Trend** (bar/line chart) to inspect detailed carbon numbers.
+  * Check **Ingestion Summary** counters representing active data sources and processing logs.
+
+### 🔌 2. Configure Ingestion Sources (Client / Admin)
+* **Access**: Log in as `client@acme.com` (or `admin@acme.com`) and navigate to **Data Sources**.
+* **Flow**:
+  * View the list of active source configurations (e.g. *SAP ERP Procurement*, *Grid Utility Billing*).
+  * Toggle sources to active/inactive, or configure new ingestion rulesets.
+
+### 📤 3. Ingest Data via File Upload (Client / Admin)
+* **Access**: Log in as `client@acme.com` and navigate to **Upload Data**.
+* **Flow**:
+  * Select your data source (e.g., *SAP ERP Procurement*).
+  * Upload a CSV or Excel data file.
+  * **Preview Mode**: The app will display a clean preview of your file data in the browser.
+  * Click **Process File**: The backend reads the contents, runs normalization routines, checks validation settings, and updates the processing batch logs status to `COMPLETED`.
+
+### 🔍 4. Review & Validate Raw Emissions (Analyst / Admin)
+* **Access**: Log in as `analyst@acme.com` and navigate to **Review Queue**.
+* **Flow**:
+  * View the list of ingested records pending verification. Highlighted alerts flag validation warnings (e.g. *unknown plant codes* or *suspicious consumption spikes*).
+  * **Detail View**: Click any row to expand a detail panel showing raw JSON payloads and error messages.
+  * **Verify and Correct**:
+    * Edit values inline (e.g. manually correcting a fuel quantity or unit).
+    * Leave comments in the feedback thread.
+    * Click **Approve** or **Reject**. Approved records are immediately updated on the main reporting dashboard charts!
+
+### 📜 5. Inspect Audit Log (Admin)
+* **Access**: Log in as `admin@acme.com` and navigate to **Audit Log**.
+* **Flow**:
+  * Inspect the secure system log tracking all user actions (e.g. uploads, manual corrections, status changes). Each log details who performed the action, which organization they belong to, and the timestamp.
+
