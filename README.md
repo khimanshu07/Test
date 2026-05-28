@@ -54,9 +54,17 @@ sequenceDiagram
 * The backend saves the user using their email address as their username (lowercased), with their status set to **Inactive** (`is_active = False`).
 * They cannot log in until approved.
 
-### 2. Admin Approval
-* The Administrator logs into the **Django Admin Panel** (`/admin/`).
-* The Admin navigates to **Users**, selects the pending account, assigns their target **Role** (Admin, Analyst, or Client User) and **Organization**, toggles the **Active** checkbox to `True`, and saves.
+### 2. Admin Approval (Step-by-Step)
+1. **Access the Admin Portal**: Navigate to the backend URL path ending in `/admin/` (e.g., `http://127.0.0.1:8000/admin/` locally or `https://<backend-url>/admin/` in production).
+2. **Log In**: Sign in using your administrator credentials (e.g., `admin@acme.com` / `admin123`).
+3. **Open Users**: Click on **Users** in the sidebar navigation (under the **Api** section).
+4. **Select Inactive User**: Locate the user registration you want to approve. Inactive users will show a red indicator or cross under the **Active** column. Click on their name/email.
+5. **Assign Details**:
+   * Review the user's name, email, and requested company name.
+   * Assign a **Role** (`Admin`, `Analyst`, or `Client User`).
+   * Verify/Assign their **Organization** (the database automatically matches or creates this from the company name they typed during signup).
+6. **Activate Account**: Scroll down to the **Permissions** section and check the **Active** (`is_active`) checkbox.
+7. **Save**: Click the **Save** button in the bottom right corner. The user is now activated and can log in instantly.
 
 ### 3. User Login
 * The activated user logs into the app using their **Email** and **Password**.
